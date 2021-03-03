@@ -1,0 +1,33 @@
+{% set version = "v0.7.6" %}
+
+package:
+  name: sd
+  version: {{ version }}
+
+source:
+  url: https://github.com/chmln/sd/archive/{{ version }}.tar.gz
+  sha256: faf33a97797b95097c08ebb7c2451ac9835907254d89863b10ab5e0813b5fe5f
+
+build:
+  number: 1
+
+requirements:
+  build:
+    - {{ compiler('rust') }}
+    - {{ compiler('c') }}              # [not win]
+    - {{ compiler('m2w64_c') }}        # [win]
+
+test:
+  commands:
+    - sd --help
+
+about:
+  home: https://github.com/chmln/sd
+  license: MIT
+  summary: sd is an intuitive find & replace CLI
+  license_family: MIT
+  license_file: LICENSE
+
+extra:
+  recipe-maintainers:
+    - ivergara
